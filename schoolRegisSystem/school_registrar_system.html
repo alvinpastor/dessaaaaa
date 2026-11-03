@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>School Registrar System</title>
+<link rel="stylesheet" href="school_registrar_system.css">
+
+</head>
+<body>
+<section id="loginScreen" class="login-screen">
+  <div class="login-art">
+    <div class="brand-mark">▦</div>
+    <h1>School Registrar<br>Management System</h1>
+    <p>A simple workspace for organizing student records, monitoring enrollment status, and keeping registrar tasks in one place.</p>
+    <div class="mini">STUDENT RECORDS · ENROLLMENT · REGISTRAR DASHBOARD</div>
+  </div>
+  <div class="login-panel">
+    <form class="login-card" id="loginForm">
+      <h2>Welcome back</h2>
+      <p>Sign in to access the registrar dashboard.</p>
+      <div class="field"><label for="username">Username</label><input id="username" autocomplete="username" placeholder="Enter your username" required></div>
+      <div class="field"><label for="password">Password</label><input id="password" type="password" autocomplete="current-password" placeholder="Enter your password" required></div>
+      <button class="primary" type="submit">Sign in to dashboard →</button>
+      <div id="loginError" class="login-error" role="alert"></div>
+      <div class="demo"><strong>Demo login</strong><br>Username: <code>admin</code><br>Password: <code>admin123</code></div>
+      <p class="footer-note">Demo project only. Do not use real student information or passwords.</p>
+    </form>
+  </div>
+</section>
+
+<div id="app" class="app hidden">
+  <aside class="sidebar">
+    <div class="side-brand"><div class="brand-mark">▦</div><div><strong>Registrar Desk</strong><small>Management system</small></div></div>
+    <div class="nav-label">WORKSPACE</div>
+    <button class="nav-btn active" data-page="dashboard"><span>▦</span><span class="nav-text">Dashboard</span></button>
+    <button class="nav-btn" data-page="students"><span>♙</span><span class="nav-text">Student Records</span></button>
+    <button class="nav-btn" data-page="add"><span>＋</span><span class="nav-text">Add Student</span></button>
+    <div class="side-bottom"><button id="logoutBtn" class="nav-btn"><span>⇥</span><span class="nav-text">Log out</span></button></div>
+  </aside>
+  <main class="main">
+    <header class="topbar">
+      <div><div class="eyebrow">SCHOOL ADMINISTRATION / REGISTRAR</div><h1 id="pageTitle">Dashboard Overview</h1></div>
+      <div class="userbox"><div class="avatar">A</div><div><strong>Administrator</strong><small>Registrar account</small></div></div>
+    </header>
+    <section id="dashboardPage">
+      <div class="cards">
+        <div class="stat"><div class="stat-top">Total students <span class="stat-icon">♙</span></div><h2 id="totalStudents">0</h2><small>All student records</small></div>
+        <div class="stat"><div class="stat-top">Enrolled <span class="stat-icon">✓</span></div><h2 id="enrolledStudents">0</h2><small>Currently enrolled</small></div>
+        <div class="stat"><div class="stat-top">Pending <span class="stat-icon">◷</span></div><h2 id="pendingStudents">0</h2><small>Awaiting confirmation</small></div>
+        <div class="stat"><div class="stat-top">Programs <span class="stat-icon">▤</span></div><h2 id="programCount">0</h2><small>Programs represented</small></div>
+      </div>
+      <section class="panel">
+        <div class="panel-head"><div><h2>Recent student records</h2><p>Latest entries in the registrar system</p></div><button class="secondary" id="viewAllBtn">View all students →</button></div>
+        <div class="table-wrap"><table><thead><tr><th>Student</th><th>Program</th><th>Year level</th><th>Status</th></tr></thead><tbody id="recentRows"></tbody></table></div>
+      </section>
+      <div class="notice"><strong>Prototype notice:</strong> This browser-based demo stores records in this browser using localStorage. It is not connected to a school database and is not suitable for confidential student data.</div>
+    </section>
+    <section id="studentsPage" class="hidden">
+      <section class="panel">
+        <div class="panel-head"><div><h2>Student records</h2><p>Search, edit, or remove student entries.</p></div><div class="tools"><input class="search" id="searchInput" placeholder="Search name, ID, or program…"><button class="primary" id="addStudentBtn">＋ Add student</button></div></div>
+        <div class="table-wrap"><table><thead><tr><th>Student</th><th>Program</th><th>Year level</th><th>Email</th><th>Status</th><th>Actions</th></tr></thead><tbody id="studentRows"></tbody></table></div>
+        <div id="studentEmpty" class="empty hidden">No student records found. Add a student to get started.</div>
+      </section>
+    </section>
+    <section id="addPage" class="hidden">
+      <section class="panel">
+        <div class="panel-head"><div><h2 id="formTitle">Add new student</h2><p>Enter the student's basic registrar information.</p></div></div>
+        <form id="studentForm">
+          <input type="hidden" id="editId">
+          <div class="form-grid">
+            <div class="field"><label for="studentId">Student ID *</label><input id="studentId" required placeholder="e.g. 2026-0001"></div>
+            <div class="field"><label for="fullName">Full name *</label><input id="fullName" required placeholder="Last name, First name"></div>
+            <div class="field"><label for="program">Program / Course *</label><input id="program" required placeholder="e.g. BS Information Systems"></div>
+            <div class="field"><label for="yearLevel">Year level *</label><select id="yearLevel" required><option value="">Select year level</option><option>1st Year</option><option>2nd Year</option><option>3rd Year</option><option>4th Year</option><option>5th Year</option></select></div>
+            <div class="field"><label for="email">Email address</label><input id="email" type="email" placeholder="student@example.com"></div>
+            <div class="field"><label for="status">Enrollment status *</label><select id="status" required><option>Enrolled</option><option>Pending</option><option>Inactive</option></select></div>
+          </div>
+          <div class="form-actions"><button type="button" class="secondary" id="cancelFormBtn">Cancel</button><button type="submit" class="primary">Save student record</button></div>
+        </form>
+      </section>
+    </section>
+    <div class="footer-note">School Registrar Management System · Demo version</div>
+  </main>
+</div>
+<div id="toast" class="toast hidden" role="status"></div>
+<script src="school_registrar_system.js"></script>
+
+</body>
+</html>

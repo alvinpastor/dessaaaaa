@@ -1,0 +1,728 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@500;600;700;800&display=swap');
+
+/* ==============================
+   1. ROOT VARIABLES
+============================== */
+
+:root {
+    --navy: #14243b;
+    --blue: #3269e8;
+    --text: #19263a;
+    --muted: #778397;
+    --bg: #f4f7fb;
+    --line: #e5eaf2;
+    --white: #fff;
+    --green: #16845b;
+    --red: #d94b55;
+}
+
+/* ==============================
+   2. GLOBAL STYLES
+============================== */
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: 'DM Sans', sans-serif;
+    background: var(--bg);
+    color: var(--text);
+}
+
+button,
+input,
+select {
+    font: inherit;
+}
+
+button {
+    cursor: pointer;
+    border: 0;
+    border-radius: 10px;
+    padding: 11px 15px;
+    font-weight: 700;
+}
+
+/* ==============================
+   3. BUTTONS AND UTILITIES
+============================== */
+
+.primary {
+    background: var(--blue);
+    color: #fff;
+}
+
+.secondary {
+    background: #edf2ff;
+    color: var(--blue);
+}
+
+.danger {
+    background: #fff0f0;
+    color: var(--red);
+}
+
+.muted {
+    color: var(--muted);
+}
+
+.hidden {
+    display: none !important;
+}
+
+/* ==============================
+   4. LOGIN SCREEN
+============================== */
+
+.login-screen {
+    min-height: 100vh;
+    display: grid;
+    grid-template-columns: 1.05fr .95fr;
+    background: #fff;
+}
+
+.login-art {
+    background: linear-gradient(145deg, #14243b, #244a83);
+    color: #fff;
+    padding: 9vw 7vw;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.login-art:after {
+    content: "";
+    position: absolute;
+    width: 360px;
+    height: 360px;
+    border: 1px solid #ffffff22;
+    border-radius: 50%;
+    right: -100px;
+    bottom: -120px;
+    box-shadow: 0 0 0 45px #ffffff08, 0 0 0 90px #ffffff05;
+}
+
+.brand-mark {
+    width: 54px;
+    height: 54px;
+    border-radius: 16px;
+    background: #ffffff20;
+    display: grid;
+    place-items: center;
+    font-size: 27px;
+    margin-bottom: 26px;
+}
+
+.login-art h1 {
+    font: 800 clamp(32px, 4vw, 52px)/1.1 Manrope, sans-serif;
+    margin: 0 0 18px;
+    max-width: 500px;
+}
+
+.login-art p {
+    color: #d3deef;
+    line-height: 1.7;
+    max-width: 450px;
+}
+
+.login-art .mini {
+    margin-top: 40px;
+    font-size: 13px;
+    color: #b7c7df;
+}
+
+.login-panel {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 35px;
+}
+
+.login-card {
+    width: 100%;
+    max-width: 390px;
+}
+
+.login-card h2 {
+    font: 800 30px Manrope;
+    margin: 0 0 8px;
+}
+
+.login-card > p {
+    color: var(--muted);
+    margin: 0 0 28px;
+}
+
+/* ==============================
+   5. FORM FIELDS
+============================== */
+
+.field {
+    display: flex;
+    flex-direction: column;
+    gap: 7px;
+    margin: 16px 0;
+}
+
+.field label {
+    font-weight: 700;
+    font-size: 13px;
+}
+
+.field input,
+.field select {
+    width: 100%;
+    padding: 13px 14px;
+    border: 1px solid #dbe2ed;
+    border-radius: 10px;
+    background: #fff;
+    outline: none;
+}
+
+.field input:focus,
+.field select:focus {
+    border-color: var(--blue);
+    box-shadow: 0 0 0 3px #3269e81c;
+}
+
+.login-card .primary {
+    width: 100%;
+    padding: 13px;
+}
+
+.login-error {
+    font-size: 13px;
+    color: var(--red);
+    margin-top: 12px;
+    min-height: 18px;
+}
+
+.demo {
+    background: #f3f6fc;
+    border-radius: 10px;
+    padding: 13px;
+    margin-top: 18px;
+    font-size: 12px;
+    line-height: 1.7;
+    color: #5b687b;
+}
+
+/* ==============================
+   6. MAIN APPLICATION
+============================== */
+
+.app {
+    min-height: 100vh;
+}
+
+/* Sidebar */
+
+.sidebar {
+    width: 250px;
+    background: var(--navy);
+    color: #fff;
+    position: fixed;
+    inset: 0 auto 0 0;
+    padding: 24px 16px;
+    display: flex;
+    flex-direction: column;
+    z-index: 5;
+}
+
+.side-brand {
+    display: flex;
+    gap: 12px;
+    align-items: center;
+    padding: 4px 10px 28px;
+}
+
+.side-brand .brand-mark {
+    width: 42px;
+    height: 42px;
+    margin: 0;
+    border-radius: 12px;
+    font-size: 21px;
+}
+
+.side-brand strong {
+    font: 800 15px Manrope;
+    display: block;
+}
+
+.side-brand small {
+    color: #9fb0c9;
+}
+
+.nav-label {
+    font-size: 10px;
+    letter-spacing: 1.4px;
+    color: #8495b0;
+    padding: 12px 12px 8px;
+}
+
+.nav-btn {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    text-align: left;
+    background: transparent;
+    color: #b9c6d9;
+    padding: 12px;
+    border-radius: 10px;
+    margin: 3px 0;
+}
+
+.nav-btn.active,
+.nav-btn:hover {
+    background: #ffffff14;
+    color: #fff;
+}
+
+.nav-btn span {
+    font-size: 18px;
+    width: 22px;
+    text-align: center;
+}
+
+.side-bottom {
+    margin-top: auto;
+    border-top: 1px solid #ffffff20;
+    padding-top: 14px;
+}
+
+/* Main content */
+
+.main {
+    margin-left: 250px;
+    padding: 28px 32px;
+    max-width: 1700px;
+}
+
+/* ==============================
+   7. TOPBAR
+============================== */
+
+.topbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 18px;
+    margin-bottom: 28px;
+}
+
+.eyebrow {
+    font-size: 12px;
+    color: var(--muted);
+    margin-bottom: 5px;
+}
+
+.topbar h1 {
+    font: 800 26px Manrope;
+    margin: 0;
+}
+
+.userbox {
+    display: flex;
+    align-items: center;
+    gap: 11px;
+    background: #fff;
+    border: 1px solid var(--line);
+    padding: 8px 12px;
+    border-radius: 13px;
+}
+
+.avatar {
+    width: 37px;
+    height: 37px;
+    border-radius: 12px;
+    background: #e5edff;
+    color: var(--blue);
+    display: grid;
+    place-items: center;
+    font-weight: 800;
+}
+
+.userbox strong {
+    font-size: 13px;
+    display: block;
+}
+
+.userbox small {
+    color: var(--muted);
+    font-size: 11px;
+}
+
+/* ==============================
+   8. DASHBOARD CARDS
+============================== */
+
+.cards {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 16px;
+    margin-bottom: 24px;
+}
+
+.stat {
+    background: #fff;
+    border: 1px solid var(--line);
+    border-radius: 16px;
+    padding: 20px;
+}
+
+.stat-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: var(--muted);
+    font-size: 13px;
+}
+
+.stat-icon {
+    width: 38px;
+    height: 38px;
+    border-radius: 12px;
+    background: #edf2ff;
+    color: var(--blue);
+    display: grid;
+    place-items: center;
+    font-size: 19px;
+}
+
+.stat h2 {
+    font: 800 30px Manrope;
+    margin: 16px 0 4px;
+}
+
+.stat small {
+    color: var(--muted);
+}
+
+/* ==============================
+   9. PANELS
+============================== */
+
+.panel {
+    background: #fff;
+    border: 1px solid var(--line);
+    border-radius: 16px;
+    padding: 22px;
+    margin-bottom: 22px;
+}
+
+.panel-head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 14px;
+    margin-bottom: 18px;
+}
+
+.panel-head h2 {
+    font: 800 17px Manrope;
+    margin: 0;
+}
+
+.panel-head p {
+    color: var(--muted);
+    font-size: 12px;
+    margin: 5px 0 0;
+}
+
+/* ==============================
+   10. SEARCH AND TABLES
+============================== */
+
+.tools {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+
+.search {
+    padding: 10px 12px;
+    border: 1px solid var(--line);
+    border-radius: 10px;
+    min-width: 220px;
+    outline: none;
+}
+
+.table-wrap {
+    overflow-x: auto;
+}
+
+table {
+    border-collapse: collapse;
+    width: 100%;
+    white-space: nowrap;
+}
+
+th {
+    text-align: left;
+    font-size: 11px;
+    letter-spacing: .4px;
+    text-transform: uppercase;
+    color: var(--muted);
+    background: #f8faff;
+    padding: 13px;
+}
+
+td {
+    padding: 14px 13px;
+    border-bottom: 1px solid #edf0f5;
+    font-size: 13px;
+}
+
+tbody tr:last-child td {
+    border-bottom: 0;
+}
+
+/* Student information */
+
+.student-name {
+    font-weight: 700;
+}
+
+.student-id {
+    color: var(--muted);
+    font-size: 11px;
+    margin-top: 3px;
+}
+
+/* Status labels */
+
+.pill {
+    display: inline-block;
+    border-radius: 30px;
+    padding: 5px 9px;
+    font-size: 11px;
+    font-weight: 700;
+    background: #e9f8f0;
+    color: #16845b;
+}
+
+.pill.pending {
+    background: #fff4df;
+    color: #a66a00;
+}
+
+.pill.inactive {
+    background: #eef1f5;
+    color: #687487;
+}
+
+/* Action buttons */
+
+.actions {
+    display: flex;
+    gap: 6px;
+}
+
+.icon-btn {
+    padding: 7px 9px;
+    background: #f1f4fa;
+    color: #506079;
+    border-radius: 8px;
+}
+
+.empty {
+    text-align: center;
+    padding: 34px;
+    color: var(--muted);
+}
+
+/* ==============================
+   11. FORMS
+============================== */
+
+.form-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 0 18px;
+}
+
+.form-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+    margin-top: 18px;
+}
+
+/* ==============================
+   12. NOTICES AND MESSAGES
+============================== */
+
+.notice {
+    padding: 12px 14px;
+    background: #eff5ff;
+    border-radius: 10px;
+    color: #365a9d;
+    font-size: 12px;
+    line-height: 1.6;
+    margin-bottom: 18px;
+}
+
+.footer-note {
+    font-size: 11px;
+    color: var(--muted);
+    margin-top: 14px;
+}
+
+.toast {
+    position: fixed;
+    right: 24px;
+    bottom: 24px;
+    background: #14243b;
+    color: #fff;
+    padding: 14px 18px;
+    border-radius: 12px;
+    box-shadow: 0 12px 35px #14243b30;
+    z-index: 20;
+    font-size: 13px;
+}
+
+/* ==============================
+   13. RESPONSIVE DESIGN
+============================== */
+
+@media (max-width: 1050px) {
+    .cards {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .main {
+        padding: 24px 20px;
+    }
+
+    .sidebar {
+        width: 220px;
+    }
+
+    .main {
+        margin-left: 220px;
+    }
+}
+
+/* Mobile layout */
+
+@media (max-width: 700px) {
+    .login-screen {
+        grid-template-columns: 1fr;
+    }
+
+    .login-art {
+        padding: 38px 28px;
+    }
+
+    .login-art h1 {
+        font-size: 34px;
+    }
+
+    .login-art .mini {
+        margin-top: 20px;
+    }
+
+    .login-panel {
+        padding: 32px 24px;
+    }
+
+    .sidebar {
+        width: 68px;
+        padding: 18px 8px;
+    }
+
+    .side-brand {
+        padding: 0 5px 24px;
+    }
+
+    .side-brand > div:last-child,
+    .nav-label,
+    .nav-btn .nav-text,
+    .side-bottom .nav-text {
+        display: none;
+    }
+
+    .nav-btn {
+        justify-content: center;
+        padding: 13px 4px;
+    }
+
+    .nav-btn span {
+        width: auto;
+    }
+
+    .main {
+        margin-left: 68px;
+        padding: 20px 12px;
+    }
+
+    .topbar {
+        align-items: flex-start;
+    }
+
+    .topbar h1 {
+        font-size: 21px;
+    }
+
+    .userbox {
+        padding: 6px;
+    }
+
+    .userbox > div:not(.avatar) {
+        display: none;
+    }
+
+    .cards {
+        gap: 9px;
+    }
+
+    .stat {
+        padding: 14px;
+    }
+
+    .stat h2 {
+        font-size: 24px;
+    }
+
+    .stat-top {
+        font-size: 11px;
+    }
+
+    .stat-icon {
+        width: 30px;
+        height: 30px;
+    }
+
+    .panel {
+        padding: 14px;
+    }
+
+    .panel-head {
+        align-items: flex-start;
+        flex-direction: column;
+    }
+
+    .tools {
+        width: 100%;
+        flex-wrap: wrap;
+    }
+
+    .search {
+        min-width: 0;
+        flex: 1;
+        width: 100%;
+    }
+
+    .form-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .topbar .eyebrow {
+        max-width: 160px;
+    }
+}
